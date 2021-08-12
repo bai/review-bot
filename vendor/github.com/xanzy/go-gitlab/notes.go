@@ -34,11 +34,12 @@ type NotesService struct {
 //
 // GitLab API docs: https://docs.gitlab.com/ce/api/notes.html
 type Note struct {
-	ID         int    `json:"id"`
-	Body       string `json:"body"`
-	Attachment string `json:"attachment"`
-	Title      string `json:"title"`
-	FileName   string `json:"file_name"`
+	ID         int           `json:"id"`
+	Type       NoteTypeValue `json:"type"`
+	Body       string        `json:"body"`
+	Attachment string        `json:"attachment"`
+	Title      string        `json:"title"`
+	FileName   string        `json:"file_name"`
 	Author     struct {
 		ID        int    `json:"id"`
 		Username  string `json:"username"`
@@ -54,6 +55,7 @@ type Note struct {
 	CreatedAt    *time.Time    `json:"created_at"`
 	NoteableID   int           `json:"noteable_id"`
 	NoteableType string        `json:"noteable_type"`
+	CommitID     string        `json:"commit_id"`
 	Position     *NotePosition `json:"position"`
 	Resolvable   bool          `json:"resolvable"`
 	Resolved     bool          `json:"resolved"`
